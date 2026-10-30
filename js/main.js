@@ -48,3 +48,26 @@ nav.querySelectorAll("a").forEach((a) => {
   if (a === linkServicos) return;
   a.addEventListener("click", fecharMenu);
 });
+
+// Animação de scroll para ícones (Fallback para navegadores sem suporte a CSS Scroll-driven animations)
+if (!CSS.supports("(animation-timeline: view()) and (animation-range: entry)")) {
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const icones = document.querySelectorAll(".stat__icone, .servico__icone, .card-detalhe__icone");
+    icones.forEach((ico) => ico.classList.add("animar-scroll-fallback"));
+
+    const observador = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visivel");
+            observador.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -30px 0px" }
+    );
+
+    icones.forEach((ico) => observador.observe(ico));
+  }
+}
+
