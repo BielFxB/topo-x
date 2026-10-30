@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Topo X | Topografia e regularização de imóveis em Primavera e Rosana - SP</title>
+  <meta name="description" content="Georreferenciamento, levantamentos topográficos, desmembramentos, usucapião, aerofotogrametria e demarcação de obras em Primavera, Rosana e região.">
+  <link rel="icon" href="assets/img/logo-topox.jpg">
+
+  <!-- Satoshi (Fontshare, uso comercial livre) -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="sr-only" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Ícones reutilizáveis -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ico-whats" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </symbol>
+    <symbol id="i-seta" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-georef" viewBox="0 0 24 24"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-topo" viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="5" rx="1"/><path d="M12 8v3M7 21l5-10 5 10M9.4 16h5.2"/></symbol>
+    <symbol id="i-drone" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M10.6 10.6L6.5 6.5M13.4 10.6l4.1-4.1M10.6 13.4l-4.1 4.1M13.4 13.4l4.1 4.1"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></symbol>
+    <symbol id="i-obra" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></symbol>
+    <symbol id="i-desmembra" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16"/><path d="M12 4v16M3 12h9"/></symbol>
+    <symbol id="i-remembra" viewBox="0 0 24 24"><rect x="3" y="6" width="7" height="12"/><rect x="14" y="6" width="7" height="12"/><path d="M10 12h4"/></symbol>
+    <symbol id="i-retifica" viewBox="0 0 24 24"><path d="M4 20l4-1L19.500 7.500a2.100 2.100 0 0 0-3-3L5 16l-1 4z"/><path d="M14.500 6.500l3 3"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></symbol>
+    <symbol id="i-parcela" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><path d="M3 12h18M9 3v9M15 12v9"/></symbol>
+    <symbol id="i-planta" viewBox="0 0 24 24"><path d="M3 7h18v10H3z"/><path d="M7 7v4M11 7v3M15 7v4M19 7v3"/></symbol>
+    <symbol id="i-gnss" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.500"/><path d="M5 12a7 7 0 0 1 7-7M2 12A10 10 0 0 1 12 2M19 12a7 7 0 0 1-7 7M22 12a10 10 0 0 1-10 10"/></symbol>
+    <symbol id="i-cert" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-pessoa" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="header__logo" href="#inicio" aria-label="Topo X Topografia, início">
+        <img src="assets/img/logo-topox.jpg" alt="Topo X Topografia" width="62" height="46">
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav-principal" aria-label="Menu principal">
+        <ul class="nav__lista">
+          <li class="nav__item nav__item--tem-filho">
+            <a class="nav__link" href="#servicos" aria-haspopup="true" aria-expanded="false">Serviços
+              <svg class="nav__seta" aria-hidden="true"><use href="#i-seta"/></svg>
+            </a>
+            <ul class="nav__sub">
+              <li><a href="#propriedades-rurais">Propriedades rurais</a></li>
+              <li><a href="#regularizacao">Regularização e parcelamento</a></li>
+              <li><a href="#obras">Obras e projetos</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a class="nav__link" href="#quem-somos">Quem somos</a></li>
+          <li class="nav__item"><a class="nav__link" href="#como-funciona">Como funciona</a></li>
+          <li class="nav__item"><a class="nav__link" href="#regiao">Região</a></li>
+          <li class="nav__item"><a class="nav__link" href="#duvidas">Dúvidas</a></li>
+          <li class="nav__item nav__cta">
+            <a class="btn btn--cheio btn--pequeno" href="https://wa.me/5518999999999" data-wa="Olá! Vi o site da Topo X e gostaria de pedir um orçamento.">
+              <svg aria-hidden="true"><use href="#ico-whats"/></svg> Orçamento
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero__midia" aria-hidden="true"></div>
+      <div class="hero__conteudo">
+        <h1 class="hero__titulo">Topografia e regularização de imóveis em Primavera, Rosana e região</h1>
+        <p class="hero__sub">Georreferenciamento | Levantamentos topográficos | Regularização fundiária | Demarcação de obras</p>
+        <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de pedir um orçamento de topografia.">
+          <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento
+        </a>
+      </div>
+    </section>
+
+    <!-- DESTAQUES -->
+    <section class="secao--preto secao--stats" aria-label="Destaques">
+      <div class="container"><div class="grade">
+        <div class="stats">
+          <div class="stat">
+            <div class="stat__icone"><svg class="ico" aria-hidden="true"><use href="#i-cert"/></svg></div>
+            <p class="stat__numero">Técnico em Agrimensura e Edificações</p>
+            <p class="stat__label">dupla formação técnica</p>
+          </div>
+          <div class="stat">
+            <div class="stat__icone"><svg class="ico" aria-hidden="true"><use href="#i-gnss"/></svg></div>
+            <p class="stat__numero">GNSS e drone</p>
+            <p class="stat__label">equipamentos de alta precisão</p>
+          </div>
+          <div class="stat">
+            <div class="stat__icone"><svg class="ico" aria-hidden="true"><use href="#i-georef"/></svg></div>
+            <p class="stat__numero">Primavera e Rosana - SP</p>
+            <p class="stat__label">e toda a região</p>
+          </div>
+          <div class="stat">
+            <div class="stat__icone"><svg class="ico" aria-hidden="true"><use href="#i-pessoa"/></svg></div>
+            <p class="stat__numero">Direto com o responsável</p>
+            <p class="stat__label">sem intermediários</p>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- SERVIÇOS: PROPRIEDADES RURAIS (branco) -->
+    <section class="secao--branco faixa" id="propriedades-rurais">
+      <span id="servicos"></span>
+      <div class="container"><div class="grade">
+        <h2 class="titulo-secao">Propriedades rurais</h2>
+        <div class="servicos servicos--3">
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-georef"/></svg></div>
+            <h3 class="servico__titulo">Georreferenciamento de imóveis rurais e urbanos</h3>
+            <p class="servico__texto">Planta e memorial com coordenadas oficiais, usados para registrar e certificar o imóvel.</p>
+          </article>
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-drone"/></svg></div>
+            <h3 class="servico__titulo">Aerofotogrametria e geoprocessamento</h3>
+            <p class="servico__texto">Mapa aéreo feito com drone, indicado para áreas grandes e de difícil acesso.</p>
+          </article>
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-topo"/></svg></div>
+            <h3 class="servico__titulo">Levantamentos topográficos e geodésicos</h3>
+            <p class="servico__texto">Medição de limites, relevo e áreas da propriedade.</p>
+          </article>
+        </div>
+        <div class="servicos__rodape">
+          <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Tenho uma propriedade rural e gostaria de um orçamento.">
+            <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento
+          </a>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- SERVIÇOS: REGULARIZAÇÃO (preto) -->
+    <section class="secao--preto faixa" id="regularizacao">
+      <div class="container"><div class="grade">
+        <h2 class="titulo-secao">Regularização e parcelamento</h2>
+        <div class="servicos servicos--3">
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-desmembra"/></svg></div>
+            <h3 class="servico__titulo">Desmembramento</h3>
+            <p class="servico__texto">Divisão de um terreno em lotes menores, cada um com a sua matrícula.</p>
+          </article>
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-remembra"/></svg></div>
+            <h3 class="servico__titulo">Remembramento</h3>
+            <p class="servico__texto">Unificação de dois ou mais lotes vizinhos em um único lote, com uma única matrícula.</p>
+          </article>
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-retifica"/></svg></div>
+            <h3 class="servico__titulo">Retificação de área</h3>
+            <p class="servico__texto">Corrige medidas e confrontações erradas ou desatualizadas na matrícula.</p>
+          </article>
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg></div>
+            <h3 class="servico__titulo">Regularização fundiária e usucapião</h3>
+            <p class="servico__texto">Planta e memorial descritivo para processos de regularização e usucapião.</p>
+          </article>
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-parcela"/></svg></div>
+            <h3 class="servico__titulo">Projetos de parcelamento do solo</h3>
+            <p class="servico__texto">Projeto de loteamento e divisão de glebas.</p>
+          </article>
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-planta"/></svg></div>
+            <h3 class="servico__titulo">Plantas e memoriais</h3>
+            <p class="servico__texto">Documentos técnicos prontos para o cartório e a prefeitura.</p>
+          </article>
+        </div>
+        <div class="servicos__rodape">
+          <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Preciso regularizar ou dividir um terreno e gostaria de um orçamento.">
+            <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento
+          </a>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- SERVIÇOS: OBRAS (branco) -->
+    <section class="secao--branco faixa" id="obras">
+      <div class="container"><div class="grade">
+        <h2 class="titulo-secao">Obras e projetos</h2>
+        <div class="servicos servicos--3">
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-obra"/></svg></div>
+            <h3 class="servico__titulo">Demarcação de obras</h3>
+            <p class="servico__texto">Marcação no terreno dos pontos e alinhamentos do projeto, para a obra sair no lugar certo.</p>
+          </article>
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-topo"/></svg></div>
+            <h3 class="servico__titulo">Levantamento para projetos</h3>
+            <p class="servico__texto">Relevo e limites do terreno, base para projetos de arquitetura e engenharia.</p>
+          </article>
+          <article class="servico">
+            <div class="servico__icone"><svg class="ico" aria-hidden="true"><use href="#i-drone"/></svg></div>
+            <h3 class="servico__titulo">Mapeamento aéreo de obras</h3>
+            <p class="servico__texto">Imagens aéreas de grandes áreas e acompanhamento do andamento da obra.</p>
+          </article>
+        </div>
+        <div class="servicos__rodape">
+          <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Tenho uma obra e gostaria de um orçamento de topografia.">
+            <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento
+          </a>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- QUEM SOMOS (preto, dividido) -->
+    <section class="secao--preto faixa" id="quem-somos">
+      <div class="container"><div class="grade">
+        <h2 class="titulo-secao">Quem somos</h2>
+        <div class="split">
+          <div class="split__midia">
+            <img src="assets/img/logo-topox.jpg" alt="Logotipo Topo X Topografia" width="400" height="300" loading="lazy">
+          </div>
+          <div class="split__texto">
+            <p>A Topo X é conduzida por um <strong>Técnico em Agrimensura e Edificações</strong>. A mesma pessoa atende você, faz a medição em campo e prepara as plantas e memoriais.</p>
+            <ul class="formacao">
+              <li><strong>Agrimensura:</strong> limites de propriedades, georreferenciamento, usucapião, divisões e unificações.</li>
+              <li><strong>Edificações:</strong> leitura de projetos, locação de obras e parcelamento do solo.</li>
+            </ul>
+            <a class="btn btn--claro" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de conversar sobre o meu projeto.">Conversar sobre o seu caso</a>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- COMO FUNCIONA (branco) -->
+    <section class="secao--branco faixa" id="como-funciona">
+      <div class="container"><div class="grade">
+        <h2 class="titulo-secao">Como funciona</h2>
+        <ol class="etapas">
+          <li><h3>Você explica o caso</h3><p>Pelo WhatsApp, com a localização e o que precisa resolver.</p></li>
+          <li><h3>Recebe o orçamento</h3><p>Com valor e prazo combinados antes de começar.</p></li>
+          <li><h3>Medição em campo</h3><p>Com GNSS e, quando indicado, drone.</p></li>
+          <li><h3>Entrega dos documentos</h3><p>Plantas e memoriais prontos para o cartório ou a obra.</p></li>
+        </ol>
+      </div></div>
+    </section>
+
+    <!-- REGIÃO (preto) -->
+    <section class="secao--preto faixa" id="regiao">
+      <div class="container"><div class="grade">
+        <h2 class="titulo-secao">Onde atendemos</h2>
+        <p class="regiao__texto">Base em Primavera, distrito de Rosana (SP). Atendemos a região, em áreas rurais, urbanas e canteiros de obra. Sua propriedade fica em outra cidade? Pergunte, avaliamos o atendimento caso a caso.</p>
+        <ul class="regiao__lista">
+          <li>Primavera</li>
+          <li>Rosana</li>
+          <li>Municípios da região</li>
+        </ul>
+        <a class="btn btn--claro" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de saber se vocês atendem a minha cidade.">Consultar atendimento</a>
+      </div></div>
+    </section>
+
+    <!-- DÚVIDAS (branco) -->
+    <section class="secao--branco faixa" id="duvidas">
+      <div class="container"><div class="grade">
+        <h2 class="titulo-secao">Dúvidas comuns</h2>
+        <div class="faq">
+          <details>
+            <summary>O que é georreferenciamento?</summary>
+            <p>É a medição dos limites do imóvel com coordenadas oficiais. O resultado é uma planta e um memorial descritivo usados para registrar e certificar a propriedade.</p>
+          </details>
+          <details>
+            <summary>Que documentos recebo no final?</summary>
+            <p>Depende do serviço. Em geral, planta, memorial descritivo e arquivos digitais, com a responsabilidade técnica do profissional. Combinamos tudo no orçamento.</p>
+          </details>
+          <details>
+            <summary>Quanto tempo leva?</summary>
+            <p>Varia com o tamanho da área, o relevo e o serviço. Informamos o prazo junto com o orçamento.</p>
+          </details>
+          <details>
+            <summary>Preciso estar presente na medição?</summary>
+            <p>Na maioria dos casos, basta alguém indicar os limites do imóvel e liberar o acesso. Explicamos o que for necessário ao combinar o serviço.</p>
+          </details>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- CHAMADA FINAL (faixa cinza) -->
+    <section class="final" id="contato">
+      <div class="container"><div class="grade final__in">
+        <h2>Conte o seu caso e receba um orçamento</h2>
+        <a class="btn btn--preto" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de pedir um orçamento.">
+          <svg aria-hidden="true"><use href="#ico-whats"/></svg> Chamar no WhatsApp
+        </a>
+      </div></div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container"><div class="grade">
+      <div class="rodape__in">
+        <div class="rodape__logo">
+          <img src="assets/img/logo-topox.jpg" alt="Topo X Topografia" width="75" height="56" loading="lazy">
+          <p>Topografia e agrimensura em Primavera, Rosana - SP e região.</p>
+        </div>
+        <div>
+          <h2>Atendimento</h2>
+          <ul>
+            <li>Primavera e Rosana - SP e região</li>
+            <li><a href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de falar com a Topo X.">WhatsApp</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Nesta página</h2>
+          <ul>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#quem-somos">Quem somos</a></li>
+            <li><a href="#como-funciona">Como funciona</a></li>
+            <li><a href="#duvidas">Dúvidas</a></li>
+          </ul>
+        </div>
+      </div>
+      <small>&copy; <span id="ano"></span> Topo X Topografia e Agrimensura. Todos os direitos reservados.</small>
+    </div></div>
+  </footer>
+
+  <!-- Barra de contato fixa no celular -->
+  <div class="barra-whats">
+    <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de pedir um orçamento.">
+      <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento no WhatsApp
+    </a>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
