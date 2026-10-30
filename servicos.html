@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Serviços Detalhados de Topografia e Agrimensura | Topo X</title>
+  <meta name="description" content="Guia completo dos serviços de topografia, georreferenciamento INCRA, aerofotogrametria com drone, demarcação de obras e regularização fundiária da Topo X.">
+  <link rel="icon" href="assets/img/logo-topox.jpg">
+
+  <!-- Satoshi (Fontshare, uso comercial livre) -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="sr-only" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Ícones reutilizáveis -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ico-whats" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </symbol>
+    <symbol id="i-seta" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-georef" viewBox="0 0 24 24"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-topo" viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="5" rx="1"/><path d="M12 8v3M7 21l5-10 5 10M9.4 16h5.2"/></symbol>
+    <symbol id="i-drone" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M10.6 10.6L6.5 6.5M13.4 10.6l4.1-4.1M10.6 13.4l-4.1 4.1M13.4 13.4l4.1 4.1"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></symbol>
+    <symbol id="i-obra" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></symbol>
+    <symbol id="i-desmembra" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16"/><path d="M12 4v16M3 12h9"/></symbol>
+    <symbol id="i-remembra" viewBox="0 0 24 24"><rect x="3" y="6" width="7" height="12"/><rect x="14" y="6" width="7" height="12"/><path d="M10 12h4"/></symbol>
+    <symbol id="i-retifica" viewBox="0 0 24 24"><path d="M4 20l4-1L19.500 7.500a2.100 2.100 0 0 0-3-3L5 16l-1 4z"/><path d="M14.500 6.500l3 3"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></symbol>
+    <symbol id="i-parcela" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><path d="M3 12h18M9 3v9M15 12v9"/></symbol>
+    <symbol id="i-planta" viewBox="0 0 24 24"><path d="M3 7h18v10H3z"/><path d="M7 7v4M11 7v3M15 7v4M19 7v3"/></symbol>
+    <symbol id="i-gnss" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.500"/><path d="M5 12a7 7 0 0 1 7-7M2 12A10 10 0 0 1 12 2M19 12a7 7 0 0 1-7 7M22 12a10 10 0 0 1-10 10"/></symbol>
+    <symbol id="i-cert" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="header__logo" href="index.html" aria-label="Topo X Topografia, início">
+        <img src="assets/img/logo-topox.jpg" alt="Topo X Topografia" width="62" height="46">
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav-principal" aria-label="Menu principal">
+        <ul class="nav__lista">
+          <li class="nav__item"><a class="nav__link" href="index.html">Início</a></li>
+          <li class="nav__item nav__item--tem-filho">
+            <a class="nav__link" href="#conteudo" aria-haspopup="true" aria-expanded="false">Serviços
+              <svg class="nav__seta" aria-hidden="true"><use href="#i-seta"/></svg>
+            </a>
+            <ul class="nav__sub">
+              <li><a href="#detalhe-georreferenciamento">Georreferenciamento INCRA</a></li>
+              <li><a href="#detalhe-levantamento">Levantamento Topográfico</a></li>
+              <li><a href="#detalhe-drone">Aerofotogrametria com Drone</a></li>
+              <li><a href="#detalhe-obras">Demarcação de Obras</a></li>
+              <li><a href="#detalhe-desmembramento">Desmembramento & Remembramento</a></li>
+              <li><a href="#detalhe-retificacao">Retificação de Área</a></li>
+              <li><a href="#detalhe-usucapiao">Regularização & Usucapião</a></li>
+              <li><a href="#detalhe-parcelamento">Parcelamento do Solo</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a class="nav__link" href="index.html#quem-somos">Quem somos</a></li>
+          <li class="nav__item"><a class="nav__link" href="index.html#como-funciona">Como funciona</a></li>
+          <li class="nav__item"><a class="nav__link" href="index.html#regiao">Região</a></li>
+          <li class="nav__item"><a class="nav__link" href="index.html#duvidas">Dúvidas</a></li>
+          <li class="nav__item nav__cta">
+            <a class="btn btn--cheio btn--pequeno" href="https://wa.me/5518999999999" data-wa="Olá! Vi a página de serviços detalhados da Topo X e gostaria de um orçamento.">
+              <svg aria-hidden="true"><use href="#ico-whats"/></svg> Orçamento
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- HERO DA PÁGINA INTERNA -->
+    <section class="hero hero--interna">
+      <div class="hero__midia" aria-hidden="true"></div>
+      <div class="hero__conteudo">
+        <h1 class="hero__titulo">Serviços Detalhados</h1>
+        <p class="hero__sub">Especificações técnicas, normas, equipamentos e entregáveis de cada serviço prestado pela Topo X.</p>
+        <div class="pills">
+          <a class="pill" href="#detalhe-georreferenciamento">Rural & INCRA</a>
+          <a class="pill" href="#detalhe-levantamento">Topografia & Obras</a>
+          <a class="pill" href="#detalhe-desmembramento">Regularização & Cartório</a>
+          <a class="pill" href="#detalhe-drone">Drones</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTA COMPLETA DOS SERVIÇOS DETALHADOS -->
+    <section class="secao--branco faixa">
+      <div class="container"><div class="grade servicos-detalhados">
+
+        <!-- 1. GEORREFERENCIAMENTO -->
+        <article class="card-detalhe" id="detalhe-georreferenciamento">
+          <div class="card-detalhe__topo">
+            <div class="card-detalhe__icone"><svg class="ico" aria-hidden="true"><use href="#i-georef"/></svg></div>
+            <div class="card-detalhe__titulos">
+              <span class="card-detalhe__cat">Propriedades Rurais & Urbanas</span>
+              <h2 class="card-detalhe__titulo">Georreferenciamento de Imóveis Rurais (INCRA / SIGEF)</h2>
+            </div>
+          </div>
+          <div class="card-detalhe__descricao">
+            <p>O georreferenciamento é a determinação exata dos limites, coordenadas e área de um imóvel rural através de métodos geodésicos de alta precisão, referenciados ao Sistema Geodésico Brasileiro (SIRGAS 2000). Em atendimento à Lei Federal nº 10.267/01, é o procedimento legal obrigatório para certificar a propriedade junto ao INCRA por meio do SIGEF.</p>
+            <p>Sem a certificação no SIGEF, o proprietário fica impedido de realizar qualquer movimentação cartorial (como venda, doação, inventário, desmembramento) ou obter financiamentos e créditos agrícolas em instituições bancárias.</p>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-box">
+              <h4>Quando é indicado</h4>
+              <ul>
+                <li>Cumprimento da exigência legal do INCRA/SIGEF</li>
+                <li>Transferência, venda ou partilha de herança</li>
+                <li>Financiamentos bancários e seguro de safra</li>
+                <li>Resolução de conflitos e litígios de divisa</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>O que é entregue</h4>
+              <ul>
+                <li>Certificação aprovada no SIGEF/INCRA</li>
+                <li>Planta georreferenciada detalhada em PDF e DWG</li>
+                <li>Memorial descritivo oficial com coordenadas UTM</li>
+                <li>Termo de Responsabilidade Técnica (TRT) emitido</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>Tecnologia & Padrões</h4>
+              <ul>
+                <li>Receptores GNSS RTK de Dupla Frequência</li>
+                <li>Datum SIRGAS 2000 / Projeção UTM</li>
+                <li>Norma Técnica para Georreferenciamento (INCRA)</li>
+                <li>Cadastro Ambiental Rural (CAR) integrado</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-detalhe__acoes">
+            <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de solicitar um orçamento para Georreferenciamento de Imóvel Rural.">
+              <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento para Georreferenciamento
+            </a>
+          </div>
+        </article>
+
+        <!-- 2. LEVANTAMENTO TOPOGRÁFICO -->
+        <article class="card-detalhe" id="detalhe-levantamento">
+          <div class="card-detalhe__topo">
+            <div class="card-detalhe__icone"><svg class="ico" aria-hidden="true"><use href="#i-topo"/></svg></div>
+            <div class="card-detalhe__titulos">
+              <span class="card-detalhe__cat">Engenharia, Arquitetura & Obras</span>
+              <h2 class="card-detalhe__titulo">Levantamento Topográfico Planialtimétrico Cadastral</h2>
+            </div>
+          </div>
+          <div class="card-detalhe__descricao">
+            <p>O levantamento planialtimétrico cadastral registra com máxima fidelidade todas as características naturais e artificiais de um terreno: perímetro, divisas com confrontantes, vias de acesso, árvores, construções existentes, redes de utilidade pública e as variações de relevo (curvas de nível).</p>
+            <p>É o ponto de partida indispensável para qualquer projeto de arquitetura, terraplenagem, infraestrutura ou drenagem, evitando retrabalhos, erros de cota e custos imprevistos na movimentação de terra.</p>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-box">
+              <h4>Quando é indicado</h4>
+              <ul>
+                <li>Projetos de arquitetura e fundações</li>
+                <li>Cálculo de volume de corte e aterro (terraplenagem)</li>
+                <li>Projetos de drenagem, esgoto e pavimentação</li>
+                <li>Identificação de aclives, declives e taludes</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>O que é entregue</h4>
+              <ul>
+                <li>Planta planialtimétrica com curvas de nível metro a metro</li>
+                <li>Arquivos digitais em AutoCAD (DWG/DXF) com layers organizadas</li>
+                <li>Perfis longitudinais e seções transversais do terreno</li>
+                <li>Relatório técnico com cotas de nível e TRT</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>Tecnologia & Padrões</h4>
+              <ul>
+                <li>GNSS RTK Geodésico e Estação Total digital</li>
+                <li>Nivelamento geométrico de alta precisão</li>
+                <li>Norma ABNT NBR 13133 (Execução de Levantamento Topográfico)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-detalhe__acoes">
+            <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de um orçamento para Levantamento Topográfico Planialtimétrico.">
+              <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento para Levantamento Topográfico
+            </a>
+          </div>
+        </article>
+
+        <!-- 3. AEROFOTOGRAMETRIA -->
+        <article class="card-detalhe" id="detalhe-drone">
+          <div class="card-detalhe__topo">
+            <div class="card-detalhe__icone"><svg class="ico" aria-hidden="true"><use href="#i-drone"/></svg></div>
+            <div class="card-detalhe__titulos">
+              <span class="card-detalhe__cat">Mapeamento Aéreo & Drones</span>
+              <h2 class="card-detalhe__titulo">Aerofotogrametria com Drones & Geoprocessamento</h2>
+            </div>
+          </div>
+          <div class="card-detalhe__descricao">
+            <p>A aerofotogrametria combina voos de drones com processamento computacional avançado e pontos de apoio em solo (GCPs) rastreados com GNSS. O resultado é um mapeamento aéreo centimétrico de grandes áreas em uma fração do tempo do levantamento convencional em solo.</p>
+            <p>Permite gerar ortofotos de altíssima definição, nuvens densas de pontos 3D, Modelos Digitais de Terreno (MDT) e de Superfície (MDS), ideais para propriedades rurais, loteamentos e grandes canteiros de obras.</p>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-box">
+              <h4>Quando é indicado</h4>
+              <ul>
+                <li>Mapeamento rápido de grandes glebas rurais</li>
+                <li>Áreas de mata densa ou relevo de difícil acesso</li>
+                <li>Planejamento de loteamentos e expansão urbana</li>
+                <li>Acompanhamento temporal da evolução de obras</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>O que é entregue</h4>
+              <ul>
+                <li>Ortomosaico métrico georreferenciado (GeoTIFF)</li>
+                <li>Modelo Digital de Terreno (MDT) e Superfície (MDS)</li>
+                <li>Curvas de nível vetorizadas em DWG e Shapefile</li>
+                <li>Nuvem de pontos 3D e imagens aéreas em alta resolução</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>Tecnologia & Padrões</h4>
+              <ul>
+                <li>Aeronaves homologadas com sensores de alta definição</li>
+                <li>Pontos de controle terrestres (GCPs) amarrados com RTK</li>
+                <li>Processamento fotogramétrico de precisão centimétrica</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-detalhe__acoes">
+            <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de solicitar um orçamento para Mapeamento Aéreo com Drones.">
+              <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento para Aerofotogrametria
+            </a>
+          </div>
+        </article>
+
+        <!-- 4. DEMARCAÇÃO DE OBRAS -->
+        <article class="card-detalhe" id="detalhe-obras">
+          <div class="card-detalhe__topo">
+            <div class="card-detalhe__icone"><svg class="ico" aria-hidden="true"><use href="#i-obra"/></svg></div>
+            <div class="card-detalhe__titulos">
+              <span class="card-detalhe__cat">Construção Civil & Infraestrutura</span>
+              <h2 class="card-detalhe__titulo">Demarcação de Obras & Locação de Estruturas</h2>
+            </div>
+          </div>
+          <div class="card-detalhe__descricao">
+            <p>A locação topográfica de obra é a transposição milimétrica do projeto estrutural e arquitetônico diretamente para o canteiro de obras. Garante que estacas, eixos, fundações, pilares, muros de divisa e alinhamentos prediais fiquem exatamente onde foram planejados.</p>
+            <p>Com a qualificação técnica também em Edificações, a Topo X interpreta projetos executivos estruturais e arquitetônicos com visão construtiva, assegurando nivelamentos de precisão e eliminando riscos de invasão de recuos ou erros caros de fundação.</p>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-box">
+              <h4>Quando é indicado</h4>
+              <ul>
+                <li>Início de obras civis, comerciais e industriais</li>
+                <li>Locação de estacas, tubulões, sapatas e blocos</li>
+                <li>Marcação de gabaritos, eixos de paredes e pilares</li>
+                <li>Controle de cotas de terraplenagem e prumo de estruturas</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>O que é entregue</h4>
+              <ul>
+                <li>Marcação física em campo com piquetes, estacas e pregos</li>
+                <li>Relatório técnico de locação com conferência de diagonais</li>
+                <li>Certidão de alinhamento e nivelamento de cotas</li>
+                <li>TRT de acompanhamento de obra</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>Tecnologia & Padrões</h4>
+              <ul>
+                <li>Estação Total e GNSS RTK de alta precisão milimétrica</li>
+                <li>Leitura direta de projetos estruturais e executivos</li>
+                <li>Conferência contínua de tolerâncias e recuos municipais</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-detalhe__acoes">
+            <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de um orçamento para Demarcação e Locação de Obra.">
+              <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento para Demarcação de Obras
+            </a>
+          </div>
+        </article>
+
+        <!-- 5. DESMEMBRAMENTO E REMEMBRAMENTO -->
+        <article class="card-detalhe" id="detalhe-desmembramento">
+          <div class="card-detalhe__topo">
+            <div class="card-detalhe__icone"><svg class="ico" aria-hidden="true"><use href="#i-desmembra"/></svg></div>
+            <div class="card-detalhe__titulos">
+              <span class="card-detalhe__cat">Parcelamento do Solo & Urbanismo</span>
+              <h2 class="card-detalhe__titulo">Desmembramento & Remembramento de Imóveis</h2>
+            </div>
+          </div>
+          <div class="card-detalhe__descricao">
+            <p>O <strong>desmembramento</strong> (ou desdobro) consiste na divisão de um lote ou gleba em duas ou mais partes independentes, aproveitando o sistema viário existente, para que cada nova porção receba sua própria matrícula individual no Cartório de Imóveis.</p>
+            <p>Já o <strong>remembramento</strong> (ou unificação) é a fusão de dois ou mais terrenos vizinhos contíguos em um único lote maior sob uma única matrícula. Ambos os processos exigem conformidade rigorosa com a Lei Federal 6.766/79 e com a legislação urbanística municipal.</p>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-box">
+              <h4>Quando é indicado</h4>
+              <ul>
+                <li>Divisão amigável ou partilha de bens familiares</li>
+                <li>Venda de parte de um terreno maior</li>
+                <li>Unificação de lotes para grandes empreendimentos</li>
+                <li>Regularização de fração ideal de imóveis</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>O que é entregue</h4>
+              <ul>
+                <li>Planta da situação atual e da situação pretendida (desdobro)</li>
+                <li>Memoriais descritivos individualizados de cada lote resultante</li>
+                <li>Quadro de áreas, confrontações e cálculos de frações</li>
+                <li>Dossiê completo pronto para aprovação na Prefeitura e CRI</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>Tecnologia & Padrões</h4>
+              <ul>
+                <li>Levantamento geodésico de precisão dos perímetros</li>
+                <li>Atendimento à Lei 6.766/79 e Plano Diretor local</li>
+                <li>Conferência de testadas mínimas e recuos obrigatórios</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-detalhe__acoes">
+            <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de um orçamento para Desmembramento ou Remembramento de terreno.">
+              <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento para Desmembramento
+            </a>
+          </div>
+        </article>
+
+        <!-- 6. RETIFICAÇÃO DE ÁREA -->
+        <article class="card-detalhe" id="detalhe-retificacao">
+          <div class="card-detalhe__topo">
+            <div class="card-detalhe__icone"><svg class="ico" aria-hidden="true"><use href="#i-retifica"/></svg></div>
+            <div class="card-detalhe__titulos">
+              <span class="card-detalhe__cat">Segurança Documental & Cartório</span>
+              <h2 class="card-detalhe__titulo">Retificação Administrativa de Área e Confrontações</h2>
+            </div>
+          </div>
+          <div class="card-detalhe__descricao">
+            <p>A retificação administrativa é o procedimento legal previsto na Lei de Registros Públicos (Lei 6.015/73, art. 213) para corrigir erros, omissões ou divergências entre as medidas descritas na escritura/matrícula do cartório e a realidade física do terreno.</p>
+            <p>Muito comum em escrituras antigas que utilizavam descrições imprecisas ("tantas braças até um espigão de cerca"), a retificação delimita o imóvel com precisão matemática sem necessidade de ação judicial lenta, através de processo direto no Cartório de Registro de Imóveis.</p>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-box">
+              <h4>Quando é indicado</h4>
+              <ul>
+                <li>Área real do terreno diferente da descrita na matrícula</li>
+                <li>Confrontantes antigos ou desatualizados no cartório</li>
+                <li>Exigência cartorial para registrar inventário ou venda</li>
+                <li>Matrículas antigas sem amarração georreferenciada</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>O que é entregue</h4>
+              <ul>
+                <li>Planta perimétrica com indicação completa de confrontantes</li>
+                <li>Memorial descritivo normatizado com coordenadas oficiais</li>
+                <li>Declaração de anuência dos confrontantes para assinatura</li>
+                <li>TRT de responsabilidade técnica perante o cartório</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>Tecnologia & Padrões</h4>
+              <ul>
+                <li>Levantamento em campo com rastreador GNSS RTK</li>
+                <li>Conformidade com a Lei nº 6.015/73 e Provimentos do CNJ</li>
+                <li>Identificação cadastral dos proprietários limítrofes</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-detalhe__acoes">
+            <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de um orçamento para Retificação de Área em Cartório.">
+              <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento para Retificação de Área
+            </a>
+          </div>
+        </article>
+
+        <!-- 7. REGULARIZAÇÃO FUNDIÁRIA E USUCAPIÃO -->
+        <article class="card-detalhe" id="detalhe-usucapiao">
+          <div class="card-detalhe__topo">
+            <div class="card-detalhe__icone"><svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg></div>
+            <div class="card-detalhe__titulos">
+              <span class="card-detalhe__cat">Regularização Jurídica & Posse</span>
+              <h2 class="card-detalhe__titulo">Plantas & Memoriais para Usucapião (Judicial e Extrajudicial)</h2>
+            </div>
+          </div>
+          <div class="card-detalhe__descricao">
+            <p>A usucapião é a via legal para transformar a posse mansa e pacífica de um imóvel em propriedade definitiva com matrícula no Cartório de Registro de Imóveis. A lei exige a apresentação de peças técnicas completas elaboradas por profissional habilitado.</p>
+            <p>A Topo X elabora todo o conjunto topográfico exigido por juízes e registradores de imóveis: levantamento da posse real, confrontações exatas de todos os vizinhos, memorial descritivo minucioso e certidão técnica com TRT registrado.</p>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-box">
+              <h4>Quando é indicado</h4>
+              <ul>
+                <li>Usucapião extrajudicial diretamente no Cartório de Imóveis</li>
+                <li>Ações de usucapião judicial via advogado</li>
+                <li>Regularização de posse antiga de imóveis urbanos ou rurais</li>
+                <li>Obtenção da primeira escritura/matrícula definitiva</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>O que é entregue</h4>
+              <ul>
+                <li>Planta topográfica perimétrica com todos os confrontantes</li>
+                <li>Memorial descritivo georreferenciado ponto a ponto</li>
+                <li>Laudo de constatação de ocupação e benfeitorias</li>
+                <li>Termo de Responsabilidade Técnica (TRT) pronto para anexar</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>Tecnologia & Padrões</h4>
+              <ul>
+                <li>Provimento nº 65/2017 do CNJ (Usucapião Extrajudicial)</li>
+                <li>Amarração a marcos geodésicos oficiais (SIRGAS 2000)</li>
+                <li>Rastreamento de alta precisão para evitar contestações</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-detalhe__acoes">
+            <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de um orçamento para Planta e Memorial de Usucapião ou Regularização Fundiária.">
+              <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento para Usucapião
+            </a>
+          </div>
+        </article>
+
+        <!-- 8. PROJETOS DE PARCELAMENTO DO SOLO -->
+        <article class="card-detalhe" id="detalhe-parcelamento">
+          <div class="card-detalhe__topo">
+            <div class="card-detalhe__icone"><svg class="ico" aria-hidden="true"><use href="#i-parcela"/></svg></div>
+            <div class="card-detalhe__titulos">
+              <span class="card-detalhe__cat">Loteamentos & Novos Empreendimentos</span>
+              <h2 class="card-detalhe__titulo">Projetos de Parcelamento do Solo & Loteamentos</h2>
+            </div>
+          </div>
+          <div class="card-detalhe__descricao">
+            <p>Desenvolvimento dos estudos topográficos e projetos preliminares para criação de novos loteamentos urbanos, chácaras de lazer e fracionamento de glebas rurais. Engloba o traçado urbanístico das quadras, lotes, vias de circulação e áreas de preservação permanente (APP).</p>
+            <p>A dupla habilitação em Agrimensura e Edificações assegura que o projeto não apenas atenda aos índices urbanísticos legais da Prefeitura, mas também considere a declividade real do relevo para facilitar o escoamento de águas e reduzir custos de infraestrutura.</p>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-box">
+              <h4>Quando é indicado</h4>
+              <ul>
+                <li>Loteamentos urbanos abertos ou fechados</li>
+                <li>Condomínios de chácaras de recreio</li>
+                <li>Divisão de glebas com abertura de novas ruas</li>
+                <li>Estudos de viabilidade técnica para novos loteadores</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>O que é entregue</h4>
+              <ul>
+                <li>Projeto urbanístico e topográfico em AutoCAD (DWG)</li>
+                <li>Quadro geral de áreas (lotes, vias, áreas públicas e verdes)</li>
+                <li>Memorial descritivo individual de todas as quadras e lotes</li>
+                <li>Planta geral para aprovação no GRAPROHAB e Prefeitura</li>
+              </ul>
+            </div>
+            <div class="meta-box">
+              <h4>Tecnologia & Padrões</h4>
+              <ul>
+                <li>Lei Federal 6.766/79 e Leis de Uso e Ocupação do Solo</li>
+                <li>Modelagem Digital de Terreno para traçado viário ótimo</li>
+                <li>Emissão de TRT de projeto e execução</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-detalhe__acoes">
+            <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de um orçamento para Projeto de Parcelamento do Solo ou Loteamento.">
+              <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento para Parcelamento do Solo
+            </a>
+          </div>
+        </article>
+
+      </div></div>
+    </section>
+
+    <!-- CHAMADA FINAL -->
+    <section class="final" id="contato">
+      <div class="container"><div class="grade final__in">
+        <h2>Ficou com alguma dúvida sobre o seu terreno ou obra?</h2>
+        <a class="btn btn--preto" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de tirar uma dúvida técnica sobre meu imóvel.">
+          <svg aria-hidden="true"><use href="#ico-whats"/></svg> Falar no WhatsApp
+        </a>
+      </div></div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <div class="container"><div class="grade">
+      <div class="rodape__in">
+        <div class="rodape__logo">
+          <img src="assets/img/logo-topox.jpg" alt="Topo X Topografia" width="75" height="56" loading="lazy">
+          <p>Topografia e agrimensura em Primavera, Rosana - SP e região.</p>
+        </div>
+        <div>
+          <h2>Atendimento</h2>
+          <ul>
+            <li>Primavera e Rosana - SP e região</li>
+            <li><a href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de falar com a Topo X.">WhatsApp</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Nesta página</h2>
+          <ul>
+            <li><a href="index.html">Página Inicial</a></li>
+            <li><a href="#detalhe-georreferenciamento">Georreferenciamento INCRA</a></li>
+            <li><a href="#detalhe-levantamento">Levantamento Topográfico</a></li>
+            <li><a href="#detalhe-obras">Demarcação de Obras</a></li>
+            <li><a href="#detalhe-desmembramento">Desmembramentos</a></li>
+          </ul>
+        </div>
+      </div>
+      <small>&copy; <span id="ano"></span> Topo X Topografia e Agrimensura. Todos os direitos reservados.</small>
+    </div></div>
+  </footer>
+
+  <!-- Barra de contato fixa no celular -->
+  <div class="barra-whats">
+    <a class="btn btn--cheio" href="https://wa.me/5518999999999" data-wa="Olá! Gostaria de pedir um orçamento.">
+      <svg aria-hidden="true"><use href="#ico-whats"/></svg> Pedir orçamento no WhatsApp
+    </a>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
