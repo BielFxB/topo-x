@@ -98,7 +98,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ---------- Cabeçalho ---------- */
 .header { position: fixed; inset: 0 0 auto 0; z-index: 100; background: var(--preto); color: var(--branco); }
 .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: var(--header-h); }
-.header__logo img { height: 46px; width: auto; background: #fff; padding: 3px; border-radius: 2px; }
+.header__logo img { height: 48px; width: auto; display: block; }
 .nav__lista { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2.25rem); }
 .nav__link {
   display: inline-flex; align-items: center; gap: .35rem; padding: .5rem 0;
@@ -232,7 +232,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .rodape { background: var(--preto); color: rgba(255, 255, 255, .85); padding-block: 72px 32px; font-size: 16px; }
 .rodape__in { display: grid; gap: 40px; }
 @media (min-width: 900px) { .rodape__in { grid-template-columns: 1.4fr 1fr 1fr; } }
-.rodape__logo img { height: 56px; width: auto; background: #fff; padding: 4px; border-radius: 2px; margin-bottom: 1rem; }
+.rodape__logo img { height: 58px; width: auto; display: block; margin-bottom: 1rem; }
 .rodape h2 { font-size: 16px; text-transform: uppercase; letter-spacing: .04em; color: #fff; margin-bottom: .9rem; }
 .rodape ul { display: grid; gap: .5rem; }
 .rodape a:hover { color: #fff; text-decoration: underline; }
