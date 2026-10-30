@@ -7,7 +7,7 @@ Site de uma página, em HTML, CSS e JavaScript puros. Não precisa instalar nada
 Edite a primeira linha de `js/main.js`:
 
 ```js
-const WHATSAPP_NUMERO = "5518999999999"; // 55 + DDD + número
+const WHATSAPP_NUMERO = "5518981477228"; // 55 + DDD + número
 ```
 
 Todos os botões do site usam esse número.

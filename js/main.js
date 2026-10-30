@@ -1,10 +1,11 @@
 // Número do WhatsApp comercial: código do país (55) + DDD + número.
-// ATENÇÃO: troque pelo número real. É o único lugar que precisa ser editado.
-const WHATSAPP_NUMERO = "5518999999999";
+const WHATSAPP_NUMERO = "5518981477228";
+const WHATSAPP_MENSAGEM_PADRAO = "Ola! Gostaria de fazer um orçamento.";
 
 // Todo link com data-wa vira um link de WhatsApp com a mensagem indicada.
 document.querySelectorAll("[data-wa]").forEach((link) => {
-  link.href = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(link.dataset.wa)}`;
+  const mensagem = link.dataset.wa || WHATSAPP_MENSAGEM_PADRAO;
+  link.href = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
 });
@@ -31,14 +32,16 @@ toggle.addEventListener("click", () => {
 
 // "Serviços": no celular abre/fecha o submenu; no computador vai até a seção.
 const linkServicos = document.querySelector(".nav__item--tem-filho > .nav__link");
-linkServicos.addEventListener("click", (e) => {
-  if (!celular.matches) return;
-  e.preventDefault();
-  const item = linkServicos.parentElement;
-  const aberto = item.dataset.aberto === "true";
-  item.dataset.aberto = String(!aberto);
-  linkServicos.setAttribute("aria-expanded", String(!aberto));
-});
+if (linkServicos) {
+  linkServicos.addEventListener("click", (e) => {
+    if (!celular.matches) return;
+    e.preventDefault();
+    const item = linkServicos.parentElement;
+    const aberto = item.dataset.aberto === "true";
+    item.dataset.aberto = String(!aberto);
+    linkServicos.setAttribute("aria-expanded", String(!aberto));
+  });
+}
 
 // Fecha o menu ao escolher um destino
 nav.querySelectorAll("a").forEach((a) => {
