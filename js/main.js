@@ -71,7 +71,9 @@ if (!CSS.supports("(animation-timeline: view()) and (animation-range: entry)")) 
   }
 }
 
-// Animação da seta correndo entre as etapas 1, 2, 3 e 4 assim que aparecem na tela
+// Animação da seta correndo entre as etapas:
+// Ativa uma única vez ao entrar na tela e permanece no estado ativo enquanto o usuário estiver na seção.
+// Quando o usuário sai da área da seção, reseta a classe para reanimar caso retorne.
 const secaoComoFunciona = document.querySelector("#como-funciona");
 if (secaoComoFunciona) {
   const observadorEtapas = new IntersectionObserver(
@@ -79,10 +81,12 @@ if (secaoComoFunciona) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           secaoComoFunciona.classList.add("animar-etapas");
+        } else {
+          secaoComoFunciona.classList.remove("animar-etapas");
         }
       });
     },
-    { threshold: 0.2, rootMargin: "0px 0px -30px 0px" }
+    { threshold: 0.15, rootMargin: "0px 0px -30px 0px" }
   );
   observadorEtapas.observe(secaoComoFunciona);
 }
