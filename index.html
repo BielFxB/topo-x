@@ -132,8 +132,18 @@
     <!-- HERO -->
     <section class="hero" id="inicio">
       <div class="hero__midia" aria-hidden="true"></div>
+      <!-- Mira do instrumento: converge e trava antes de o título entrar -->
+      <div class="hero__mira" aria-hidden="true">
+        <span class="mira-v"></span>
+        <span class="mira-h"></span>
+      </div>
+      <div class="hero__traco" aria-hidden="true"></div>
       <div class="hero__conteudo">
-        <h1 class="hero__titulo">Soluções em Topografia e Agrimensura em Primavera, Rosana e região</h1>
+        <h1 class="hero__titulo">
+          <span class="linha"><span style="--i:0">Soluções em Topografia</span></span>
+          <span class="linha"><span style="--i:1">e Agrimensura em Primavera,</span></span>
+          <span class="linha"><span style="--i:2">Rosana e região</span></span>
+        </h1>
         <p class="hero__sub">Georreferenciamento | Levantamentos topográficos | Regularização fundiária | Demarcação de
           obras</p>
         <a class="btn btn--cheio" href="https://wa.me/5518981477228" data-wa="Ola! Gostaria de fazer um orçamento.">
@@ -148,7 +158,7 @@
     <section class="secao--preto secao--stats" aria-label="Destaques">
       <div class="container">
         <div class="grade">
-          <div class="stats">
+          <div class="stats" data-grupo>
             <div class="stat">
               <div class="stat__icone"><svg class="ico" aria-hidden="true">
                   <use href="#i-cert" />
@@ -187,8 +197,8 @@
       <span id="servicos"></span>
       <div class="container">
         <div class="grade">
-          <h2 class="titulo-secao">Propriedades rurais</h2>
-          <div class="servicos servicos--3">
+          <h2 class="titulo-secao" data-revelar>Propriedades rurais</h2>
+          <div class="servicos servicos--3" data-grupo>
             <article class="servico">
               <div class="servico__icone"><svg class="ico" aria-hidden="true">
                   <use href="#i-georef" />
@@ -231,8 +241,8 @@
     <section class="secao--preto faixa" id="regularizacao">
       <div class="container">
         <div class="grade">
-          <h2 class="titulo-secao">Regularização e parcelamento</h2>
-          <div class="servicos servicos--3">
+          <h2 class="titulo-secao" data-revelar>Regularização e parcelamento</h2>
+          <div class="servicos servicos--3" data-grupo>
             <article class="servico">
               <div class="servico__icone"><svg class="ico" aria-hidden="true">
                   <use href="#i-desmembra" />
@@ -296,8 +306,8 @@
     <section class="secao--branco faixa" id="obras">
       <div class="container">
         <div class="grade">
-          <h2 class="titulo-secao">Obras e projetos</h2>
-          <div class="servicos servicos--3">
+          <h2 class="titulo-secao" data-revelar>Obras e projetos</h2>
+          <div class="servicos servicos--3" data-grupo>
             <article class="servico">
               <div class="servico__icone"><svg class="ico" aria-hidden="true">
                   <use href="#i-obra" />
