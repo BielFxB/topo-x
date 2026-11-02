@@ -378,24 +378,58 @@
       <div class="container">
         <div class="grade">
           <h2 class="titulo-secao">Como funciona</h2>
-          <ol class="etapas">
-            <li>
-              <h3>Você explica o caso</h3>
-              <p>Pelo WhatsApp, com a localização e o que precisa resolver.</p>
-            </li>
-            <li>
-              <h3>Recebe o orçamento</h3>
-              <p>Com valor e prazo combinados antes de começar.</p>
-            </li>
-            <li>
-              <h3>Medição em campo</h3>
-              <p>Com GNSS e, quando indicado, drone.</p>
-            </li>
-            <li>
-              <h3>Entrega dos documentos</h3>
-              <p>Plantas e memoriais prontos para o cartório ou a obra.</p>
-            </li>
-          </ol>
+          <div class="etapas-fluxo">
+            <!-- Trilha e seta que corre entre as 4 etapas -->
+            <div class="etapas__trilha" aria-hidden="true">
+              <div class="etapas__linha-base"></div>
+              <div class="etapas__linha-progresso"></div>
+              <div class="etapas__marcos">
+                <span class="etapas__marco" title="Etapa 1"></span>
+                <span class="etapas__marco" title="Etapa 2"></span>
+                <span class="etapas__marco" title="Etapa 3"></span>
+                <span class="etapas__marco" title="Etapa 4"></span>
+              </div>
+              <div class="etapas__seta-runner" aria-hidden="true">
+                <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
+                  <path d="M4 8h8M8 4l4 4-4 4" />
+                </svg>
+              </div>
+            </div>
+
+            <ol class="etapas">
+              <li>
+                <h3>Você explica o caso</h3>
+                <p>Pelo WhatsApp, com a localização e o que precisa resolver.</p>
+                <div class="etapa__seta-mobile" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" focusable="false">
+                    <path d="M8 3v10M4 9l4 4 4-4" />
+                  </svg>
+                </div>
+              </li>
+              <li>
+                <h3>Recebe o orçamento</h3>
+                <p>Com valor e prazo combinados antes de começar.</p>
+                <div class="etapa__seta-mobile" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" focusable="false">
+                    <path d="M8 3v10M4 9l4 4 4-4" />
+                  </svg>
+                </div>
+              </li>
+              <li>
+                <h3>Medição em campo</h3>
+                <p>Com GNSS e, quando indicado, drone.</p>
+                <div class="etapa__seta-mobile" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" focusable="false">
+                    <path d="M8 3v10M4 9l4 4 4-4" />
+                  </svg>
+                </div>
+              </li>
+              <li>
+                <h3>Entrega dos documentos</h3>
+                <p>Plantas e memoriais prontos para o cartório ou a obra.</p>
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>

@@ -71,3 +71,18 @@ if (!CSS.supports("(animation-timeline: view()) and (animation-range: entry)")) 
   }
 }
 
+// Animação da seta correndo entre as etapas 1, 2, 3 e 4 assim que aparecem na tela
+const secaoComoFunciona = document.querySelector("#como-funciona");
+if (secaoComoFunciona) {
+  const observadorEtapas = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          secaoComoFunciona.classList.add("animar-etapas");
+        }
+      });
+    },
+    { threshold: 0.2, rootMargin: "0px 0px -30px 0px" }
+  );
+  observadorEtapas.observe(secaoComoFunciona);
+}

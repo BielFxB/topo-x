@@ -925,7 +925,96 @@ ol {
   background: var(--accent);
 }
 
-/* ---------- Como funciona ---------- */
+/* ---------- Como funciona (Trilha e Seta Correndo) ---------- */
+.etapas-fluxo {
+  position: relative;
+  margin-top: 1.25rem;
+}
+
+.etapas__trilha {
+  position: relative;
+  height: 32px;
+  margin-inline: calc((100% - 3 * var(--gap-col)) / 8);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.etapas__linha-base {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e2e8f0;
+  border-radius: 2px;
+}
+
+.etapas__linha-progresso {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.etapas__marcos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.etapas__marco {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #cbd5e1;
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+}
+
+.etapas__marco:nth-child(1) { left: 0%; }
+.etapas__marco:nth-child(2) { left: 33.333%; }
+.etapas__marco:nth-child(3) { left: 66.667%; }
+.etapas__marco:nth-child(4) { left: 100%; }
+
+.etapas__seta-runner {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(46, 75, 216, .35);
+  z-index: 2;
+  opacity: 0;
+}
+
+.etapas__seta-runner svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.etapa__seta-mobile {
+  display: none;
+}
+
 .etapas {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -933,21 +1022,250 @@ ol {
   counter-reset: etapa;
 }
 
-@media (max-width: 900px) {
-  .etapas {
-    grid-template-columns: repeat(2, 1fr);
+.etapas li {
+  counter-increment: etapa;
+  position: relative;
+  padding-top: 0.5rem;
+}
+
+.etapas li::before {
+  content: counter(etapa);
+  display: block;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 900;
+  color: var(--preto);
+  margin-bottom: .75rem;
+  transition: color .4s ease, transform .4s ease;
+}
+
+.etapas h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: .5rem;
+}
+
+.etapas p {
+  color: var(--cinza-texto);
+  font-size: var(--fs-base);
+  line-height: 1.4;
+}
+
+/* Animações quando a seção entra na tela (.animar-etapas) */
+.animar-etapas .etapas__seta-runner {
+  opacity: 1;
+  animation: correr-seta 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animar-etapas .etapas__linha-progresso {
+  animation: progresso-linha 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes correr-seta {
+  0% {
+    left: 0%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  3% {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  6% {
+    left: 0%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  16% {
+    left: 33.333%;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  20% {
+    left: 33.333%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  30% {
+    left: 66.667%;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  34% {
+    left: 66.667%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  44% {
+    left: 100%;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  48%, 88% {
+    left: 100%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  94% {
+    left: 100%;
+    opacity: 0;
+  }
+  96% {
+    left: 0%;
+    opacity: 0;
+  }
+  100% {
+    left: 0%;
+    opacity: 1;
   }
 }
 
-@media (max-width: 640px) {
+@keyframes progresso-linha {
+  0%, 6% {
+    transform: scaleX(0);
+  }
+  16%, 20% {
+    transform: scaleX(0.3333);
+  }
+  30%, 34% {
+    transform: scaleX(0.6667);
+  }
+  44%, 88% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  94% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+  96% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+}
+
+/* Marcos da trilha no desktop */
+.animar-etapas .etapas__marco:nth-child(1) { animation: ativar-marco-1 5s ease infinite; }
+.animar-etapas .etapas__marco:nth-child(2) { animation: ativar-marco-2 5s ease infinite; }
+.animar-etapas .etapas__marco:nth-child(3) { animation: ativar-marco-3 5s ease infinite; }
+.animar-etapas .etapas__marco:nth-child(4) { animation: ativar-marco-4 5s ease infinite; }
+
+@keyframes ativar-marco-1 {
+  0%, 88% {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(46, 75, 216, .22);
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  94%, 100% {
+    background: #fff;
+    border-color: #cbd5e1;
+    box-shadow: none;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes ativar-marco-2 {
+  0%, 15% {
+    background: #fff;
+    border-color: #cbd5e1;
+    box-shadow: none;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  16%, 88% {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(46, 75, 216, .22);
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  94%, 100% {
+    background: #fff;
+    border-color: #cbd5e1;
+    box-shadow: none;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes ativar-marco-3 {
+  0%, 29% {
+    background: #fff;
+    border-color: #cbd5e1;
+    box-shadow: none;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  30%, 88% {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(46, 75, 216, .22);
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  94%, 100% {
+    background: #fff;
+    border-color: #cbd5e1;
+    box-shadow: none;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes ativar-marco-4 {
+  0%, 43% {
+    background: #fff;
+    border-color: #cbd5e1;
+    box-shadow: none;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  44%, 88% {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(46, 75, 216, .22);
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  94%, 100% {
+    background: #fff;
+    border-color: #cbd5e1;
+    box-shadow: none;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Numerais no desktop */
+.animar-etapas .etapas li:nth-child(1)::before { animation: ativar-num-1 5s ease infinite; }
+.animar-etapas .etapas li:nth-child(2)::before { animation: ativar-num-2 5s ease infinite; }
+.animar-etapas .etapas li:nth-child(3)::before { animation: ativar-num-3 5s ease infinite; }
+.animar-etapas .etapas li:nth-child(4)::before { animation: ativar-num-4 5s ease infinite; }
+
+@keyframes ativar-num-1 {
+  0%, 88% { color: var(--accent); }
+  94%, 100% { color: var(--preto); }
+}
+
+@keyframes ativar-num-2 {
+  0%, 15% { color: var(--preto); }
+  16%, 88% { color: var(--accent); }
+  94%, 100% { color: var(--preto); }
+}
+
+@keyframes ativar-num-3 {
+  0%, 29% { color: var(--preto); }
+  30%, 88% { color: var(--accent); }
+  94%, 100% { color: var(--preto); }
+}
+
+@keyframes ativar-num-4 {
+  0%, 43% { color: var(--preto); }
+  44%, 88% { color: var(--accent); }
+  94%, 100% { color: var(--preto); }
+}
+
+/* Layout mobile / tablet (< 768px) */
+@media (max-width: 768px) {
+  .etapas__trilha {
+    display: none;
+  }
+
   .etapas {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 18px;
   }
 
   .etapas li {
-    border-top: 0;
     padding: 14px 16px;
     background: #f8faff;
     border: 1px solid #e5eaf8;
@@ -960,6 +1278,8 @@ ol {
     column-gap: 14px;
     row-gap: 2px;
     align-items: center;
+    position: relative;
+    border-top: 0;
   }
 
   .etapas li::before {
@@ -967,14 +1287,15 @@ ol {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: var(--accent);
-    color: #fff;
+    background: #e2e8f0;
+    color: var(--preto);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 0;
+    transition: background .3s ease, color .3s ease;
   }
 
   .etapas h3 {
@@ -990,35 +1311,204 @@ ol {
     margin-bottom: 0;
   }
 
-  .etapas__linha {
-    display: none;
+  .etapa__seta-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -11px;
+    left: 34px;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1.5px solid #cbd5e1;
+    color: #94a3b8;
+    z-index: 2;
+    transition: color .3s ease, border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+  }
+
+  .etapa__seta-mobile svg {
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Animações sequenciais no mobile */
+  .animar-etapas .etapas li:nth-child(1) .etapa__seta-mobile {
+    animation: mobile-seta-1 5s ease infinite;
+  }
+  @keyframes mobile-seta-1 {
+    0%, 6% {
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(46, 75, 216, .2);
+      transform: translateX(-50%) translateY(2px) scale(1.15);
+    }
+    16%, 88% {
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: none;
+      transform: translateX(-50%);
+    }
+    94%, 100% {
+      color: #94a3b8;
+      border-color: #cbd5e1;
+      box-shadow: none;
+      transform: translateX(-50%);
+    }
+  }
+
+  .animar-etapas .etapas li:nth-child(2) .etapa__seta-mobile {
+    animation: mobile-seta-2 5s ease infinite;
+  }
+  @keyframes mobile-seta-2 {
+    0%, 15% {
+      color: #94a3b8;
+      border-color: #cbd5e1;
+      box-shadow: none;
+      transform: translateX(-50%);
+    }
+    16%, 22% {
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(46, 75, 216, .2);
+      transform: translateX(-50%) translateY(2px) scale(1.15);
+    }
+    30%, 88% {
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: none;
+      transform: translateX(-50%);
+    }
+    94%, 100% {
+      color: #94a3b8;
+      border-color: #cbd5e1;
+      box-shadow: none;
+      transform: translateX(-50%);
+    }
+  }
+
+  .animar-etapas .etapas li:nth-child(3) .etapa__seta-mobile {
+    animation: mobile-seta-3 5s ease infinite;
+  }
+  @keyframes mobile-seta-3 {
+    0%, 29% {
+      color: #94a3b8;
+      border-color: #cbd5e1;
+      box-shadow: none;
+      transform: translateX(-50%);
+    }
+    30%, 36% {
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(46, 75, 216, .2);
+      transform: translateX(-50%) translateY(2px) scale(1.15);
+    }
+    44%, 88% {
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: none;
+      transform: translateX(-50%);
+    }
+    94%, 100% {
+      color: #94a3b8;
+      border-color: #cbd5e1;
+      box-shadow: none;
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Badges no mobile */
+  .animar-etapas .etapas li:nth-child(1)::before { animation: mobile-badge-1 5s ease infinite; }
+  .animar-etapas .etapas li:nth-child(2)::before { animation: mobile-badge-2 5s ease infinite; }
+  .animar-etapas .etapas li:nth-child(3)::before { animation: mobile-badge-3 5s ease infinite; }
+  .animar-etapas .etapas li:nth-child(4)::before { animation: mobile-badge-4 5s ease infinite; }
+
+  @keyframes mobile-badge-1 {
+    0%, 88% {
+      background: var(--accent);
+      color: #fff;
+    }
+    94%, 100% {
+      background: #e2e8f0;
+      color: var(--preto);
+    }
+  }
+
+  @keyframes mobile-badge-2 {
+    0%, 15% {
+      background: #e2e8f0;
+      color: var(--preto);
+    }
+    16%, 88% {
+      background: var(--accent);
+      color: #fff;
+    }
+    94%, 100% {
+      background: #e2e8f0;
+      color: var(--preto);
+    }
+  }
+
+  @keyframes mobile-badge-3 {
+    0%, 29% {
+      background: #e2e8f0;
+      color: var(--preto);
+    }
+    30%, 88% {
+      background: var(--accent);
+      color: #fff;
+    }
+    94%, 100% {
+      background: #e2e8f0;
+      color: var(--preto);
+    }
+  }
+
+  @keyframes mobile-badge-4 {
+    0%, 43% {
+      background: #e2e8f0;
+      color: var(--preto);
+    }
+    44%, 88% {
+      background: var(--accent);
+      color: #fff;
+    }
+    94%, 100% {
+      background: #e2e8f0;
+      color: var(--preto);
+    }
   }
 }
 
-.etapas li {
-  counter-increment: etapa;
-  border-top: 3px solid var(--preto);
-  padding-top: 1.25rem;
-}
-
-.etapas li::before {
-  content: counter(etapa);
-  display: block;
-  font-size: 48px;
-  line-height: 1;
-  font-weight: 900;
-  margin-bottom: .75rem;
-}
-
-.etapas h3 {
-  font-size: var(--fs-h3);
-  margin-bottom: .5rem;
-}
-
-.etapas p {
-  color: var(--cinza-texto);
-  font-size: var(--fs-base);
-  line-height: 1.4;
+@media (prefers-reduced-motion: reduce) {
+  .animar-etapas .etapas__seta-runner,
+  .animar-etapas .etapas__linha-progresso,
+  .animar-etapas .etapas__marco,
+  .animar-etapas .etapas li::before,
+  .animar-etapas .etapa__seta-mobile {
+    animation: none !important;
+  }
+  .etapas__linha-progresso {
+    transform: scaleX(1) !important;
+  }
+  .etapas__marco {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+  }
+  .etapas__seta-runner {
+    left: 100% !important;
+    opacity: 1 !important;
+  }
+  .etapas li::before {
+    color: var(--accent) !important;
+  }
 }
 
 /* ---------- Região ---------- */
@@ -1839,44 +2329,7 @@ ol {
   }
 }
 
-/* ---------- 3. Etapas: a travessia (numerais que realmente são sequência) ---------- */
-.etapas {
-  counter-reset: etapa;
-}
-
-.etapas li {
-  position: relative;
-}
-
-/* A linha da travessia, ligando uma etapa à seguinte. */
-.etapas__linha {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--linha);
-  overflow: hidden;
-}
-
-.etapas__linha::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 1.4s var(--ease-traco);
-}
-
-.js-anim .etapas.revelado .etapas__linha::after {
-  transform: scaleX(1);
-}
-
-.etapas li {
-  border-top: 0;
-  padding-top: 1.25rem;
-}
+/* ---------- 3. Etapas (definidas em Como funciona) ---------- */
 
 /* ---------- 4. Cartões: perímetro traçado no hover ---------- */
 .card-detalhe {
