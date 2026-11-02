@@ -78,13 +78,6 @@ body {
   color: var(--preto);
   background: var(--branco);
   -webkit-font-smoothing: antialiased;
-  padding-bottom: 4.75rem;
-}
-
-@media (min-width: 961px) {
-  body {
-    padding-bottom: 0;
-  }
 }
 
 img,
@@ -267,8 +260,7 @@ ol {
 /* Botões de destaque sobre fundo azul: brancos, para contrastar com a cor da logo */
 .header .btn--cheio,
 .hero .btn--cheio,
-.secao--preto .btn--cheio,
-.barra-whats .btn--cheio {
+.secao--preto .btn--cheio {
   background-color: var(--branco);
   border-color: var(--branco);
   color: var(--preto);
@@ -276,8 +268,7 @@ ol {
 
 .header .btn--cheio:hover,
 .hero .btn--cheio:hover,
-.secao--preto .btn--cheio:hover,
-.barra-whats .btn--cheio:hover {
+.secao--preto .btn--cheio:hover {
   background-color: transparent;
   border-color: var(--branco);
   color: var(--branco);
@@ -1562,7 +1553,7 @@ ol {
 
 @media (max-width: 640px) {
   .rodape {
-    padding-block: 36px 90px;
+    padding-block: 36px 32px;
   }
 
   .rodape__in {
@@ -1609,34 +1600,6 @@ ol {
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, .18);
   font-size: 14px;
-}
-
-/* ---------- Barra de contato fixa no celular ---------- */
-.barra-whats {
-  position: fixed;
-  inset: auto 0 0 0;
-  z-index: 90;
-  padding: .5rem var(--gutter) calc(.5rem + env(safe-area-inset-bottom));
-  background: rgba(11, 24, 86, .96);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(255, 255, 255, .15);
-  box-shadow: 0 -4px 18px rgba(0, 0, 0, .2);
-}
-
-.barra-whats .btn {
-  width: 100%;
-  padding: 10px 16px;
-  min-height: 44px;
-  font-size: 13.5px;
-  letter-spacing: .02em;
-  white-space: nowrap;
-}
-
-@media (min-width: 961px) {
-  .barra-whats {
-    display: none;
-  }
 }
 
 /* ---------- Página interna de serviços detalhados ---------- */
